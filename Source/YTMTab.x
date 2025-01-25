@@ -25,35 +25,24 @@ static BOOL YTMU(NSString *key) {
 // https://gist.github.com/BandarHL/dce564ab717bed93d479fe849d654c75
 %hook YTPivotBarView
 - (void)setRenderer:(YTIPivotBarRenderer *)renderer {
-    if (YTMU(@"YTMUltimateIsEnabled") && !YTMU(@"hideDownloadsTab")) {
-        YTIIcon *ytmuIcon = [%c(YTIIcon) new];
-        ytmuIcon.iconType = 1;
+    YTIBrowseEndpoint *endPoint = [[%c(YTIBrowseEndpoint) alloc] init];
+    [endPoint setBrowseId:@"BHdownloadsVC"];
+    YTICommand *command = [[%c(YTICommand) alloc] init];
+    [command setBrowseEndpoint:endPoint];
 
-        YTIBrowseEndpoint *ytmuBrowseEndpoint = [%c(YTIBrowseEndpoint) new];
-        ytmuBrowseEndpoint.browseId = @"FEytmu_downloads";
+    YTIPivotBarItemRenderer *itemBar = [[%c(YTIPivotBarItemRenderer) alloc] init];
+    [itemBar setPivotIdentifier:@"BHdownloadsVC"];
+    YTIIcon *icon = [itemBar icon];
+    [icon setIconType:1];
+    [itemBar setNavigationEndpoint:command];
 
-        YTICommand *ytmuCommand = [%c(YTICommand) new];
-        ytmuCommand.browseEndpoint = ytmuBrowseEndpoint;
+    YTIFormattedString *formatString = [%c(YTIFormattedString) formattedStringWithString:LOC(@"DOWNLOADS")];
+    [itemBar setTitle:formatString];
 
-        YTIAccessibilityData *ytmuData = [%c(YTIAccessibilityData) new];
-        ytmuData.label = LOC(@"DOWNLOADS");
+    YTIPivotBarSupportedRenderers *barSupport = [[%c(YTIPivotBarSupportedRenderers) alloc] init];
+    [barSupport setPivotBarItemRenderer:itemBar];
 
-        YTIAccessibilitySupportedDatas *ytmuAccessibility = [%c(YTIAccessibilitySupportedDatas) new];
-        ytmuAccessibility.accessibilityData = ytmuData;
-
-        YTIPivotBarItemRenderer *barItem = [[%c(YTIPivotBarItemRenderer) alloc] init];
-        barItem.pivotIdentifier = @"FEytmu_downloads";
-        barItem.targetId = @"pivot-ytmu-downloads";
-        barItem.title = [%c(YTIFormattedString) formattedStringWithString:LOC(@"DOWNLOADS")];
-        barItem.icon = ytmuIcon;
-        barItem.navigationEndpoint = ytmuCommand;
-        barItem.accessibility = ytmuAccessibility;
-
-        YTIPivotBarSupportedRenderers *ytmuRenderer = [%c(YTIPivotBarSupportedRenderers) new];
-        ytmuRenderer.pivotBarItemRenderer = barItem;
-
-        [renderer.itemsArray addObject:ytmuRenderer];
-    }
+    if (YTMU(@"YTMUltimateIsEnabled") && !YTMU(@"hideDownloadsTab")) [renderer.itemsArray addObject:barSupport];
 
     %orig(renderer);
 }
@@ -63,27 +52,19 @@ static BOOL YTMU(NSString *key) {
 - (void)viewDidLoad {
     %orig;
 
-    if (YTMU(@"YTMUltimateIsEnabled") && !YTMU(@"hideDownloadsTab")) {
-        YTICommand *navEndpoint = nil;
-
-        if (class_getInstanceVariable([self class], "_navEndpoint") != NULL) {
-            navEndpoint = [self valueForKey:@"_navEndpoint"];
+    @try {
+        YTICommand *navEndpoint = [self valueForKey:@"_navEndpoint"];
+        if ([navEndpoint.browseEndpoint.browseId isEqualToString:@"BHdownloadsVC"]) {
+            UIViewController *downloadPageController = [[YTMDownloads alloc] init];
+            [self addChildViewController:downloadPageController];
+            // FIXME: View issues
+            [downloadPageController.view setFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
+            [self.view addSubview:downloadPageController.view];
+            [self.view endEditing:YES];
+            [downloadPageController didMoveToParentViewController:self];
         }
-
-        if (class_getInstanceVariable([self class], "_navigationEndpoint") != NULL) {
-            navEndpoint = [self valueForKey:@"_navigationEndpoint"];
-        }
-
-        if (navEndpoint) {
-            if ([navEndpoint.browseEndpoint.browseId isEqualToString:@"FEytmu_downloads"]) {
-                YTMDownloads *ytmuDownloadsVC = [[YTMDownloads alloc] init];
-                [self addChildViewController:ytmuDownloadsVC];
-                [ytmuDownloadsVC.view setFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height)];
-                [self.view addSubview:ytmuDownloadsVC.view];
-                [self.view endEditing:YES];
-                [ytmuDownloadsVC didMoveToParentViewController:self];
-            }
-        }
+    } @catch (NSException *exception) {
+        NSLog(@"Cannot show downloads vc, why? %@", exception.reason);
     }
 }
 %end

@@ -229,10 +229,3 @@ static BOOL YTMU(NSString *key) {
 %end
 
 // Unlimited listening - YouAreThere (https://github.com/PoomSmart/YouAreThere)
-%hook YTColdConfig
-- (BOOL)enableYouthereCommandsOnIos { return YTMU(@"YTMUltimateIsEnabled") ? NO : %orig; }
-%end
-
-%hook YTYouThereController
-- (BOOL)shouldShowYouTherePrompt { return YTMU(@"YTMUltimateIsEnabled") ? NO : %orig; }
-%end
