@@ -16,7 +16,7 @@ concurrency:
 jobs:
   build:
     name: Build YTMusicUltimate
-    runs-on: macos-12
+    runs-on: macos-15
     permissions:
       contents: write
 
@@ -30,6 +30,19 @@ jobs:
       - name: Install Dependencies
         run: brew install ldid dpkg make
               
+      - name: Hide sensitive inputs
+        uses: levibostian/action-hide-sensitive-inputs@v1
+
+      - name: Cache Theos
+        id: theos
+        uses: actions/cache@v4.2.0
+        env:
+          cache-name: theos_cache_67db2ab
+        with:
+          path: theos/
+          key: ${{ env.cache-name }}
+          restore-keys: ${{ env.cache-name }}
+      
 
       - name: Set PATH environment variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH 
