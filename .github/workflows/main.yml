@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs: 
       decrypted_youtube_music_url:
-        description: "The direct URL to the decrypted YouTube Music ipa (Upload a decrypted .ipa file to Dropbox and input its URL here.)"
+        description: "The direct URL to decrypted ipa"
         default: ""
         required: true
         type: string    
@@ -16,14 +16,14 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-jobs:
-  build:
+    jobs:
+    build:
     name: Build YTMusicUltimate
-    runs-on: macos-latest
+    runs-on: macos-13
     permissions:
     contents: write
 
-steps:
+      steps:
       - name: Checkout Main
         uses: actions/checkout@v4.1.1
         with:
@@ -34,7 +34,7 @@ steps:
         uses: levibostian/action-hide-sensitive-inputs@v1
 
       - name: Install Dependencies
-        run: brew install make ldid
+        run: brew install make ldid 
 
       - name: Set PATH environment variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
