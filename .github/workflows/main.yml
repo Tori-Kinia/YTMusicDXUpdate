@@ -96,6 +96,10 @@ jobs:
           git clone https://github.com/Al4ise/Azule 
           sudo ln -sf ~/Azule/azule /usr/local/bin/azule
 
+      - name: Install cyan
+        run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+
+
       - name: Prepare YouTube Music iPA
         id: prepare_youtube_music
         run: |
