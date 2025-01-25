@@ -18,7 +18,7 @@ jobs:
 
       - name: Add YTMusicUltimateDX submodules
         run: |
-          git submodule add https://github.com/PoomSmart/YouTubeHeader.git Tweaks/YouTubeHeader
+          git submodule del https://github.com/PoomSmart/YouTubeHeader.git Tweaks/YouTubeHeader
           git submodule add https://github.com/PoomSmart/YouTubeMusicHeader.git Tweaks/YouTubeMusicHeader
           git submodule add https://github.com/PoomSmart/YTMABConfig.git Tweaks/YTMABConfig
           git submodule add https://github.com/PoomSmart/Return-YouTube-Dislikes.git Tweaks/Return-YouTube-Dislikes
