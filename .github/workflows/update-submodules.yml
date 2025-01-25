@@ -18,11 +18,10 @@ jobs:
 
       - name: Update YTMusicUltimateDX submodules
         run: |
-          git submodule remove https://github.com/PoomSmart/YouTubeHeader.git Tweaks/YouTubeHeader
-          git submodule update --init --recursive --remote https://github.com/PoomSmart/YouTubeMusicHeader.git Tweaks/YouTubeMusicHeader
-          git submodule update --init --recursive --remote https://github.com/PoomSmart/YTMABConfig.git Tweaks/YTMABConfig
-          git submodule update --init --recursive --remote https://github.com/PoomSmart/Return-YouTube-Dislikes.git Tweaks/Return-YouTube-Dislikes
-          git submodule update --init --recursive --remote https://github.com/PoomSmart/Return-YouTube-Music-Dislikes.git Tweaks/Return-YouTube-Music-Dislikes
+          git submodule add https://github.com/PoomSmart/YouTubeMusicHeader.git Tweaks/YouTubeMusicHeader
+          git submodule add https://github.com/PoomSmart/YTMABConfig.git Tweaks/YTMABConfig
+          git submodule add https://github.com/PoomSmart/Return-YouTube-Dislikes.git Tweaks/Return-YouTube-Dislikes
+          git submodule add https://github.com/PoomSmart/Return-YouTube-Music-Dislikes.git Tweaks/Return-YouTube-Music-Dislikes
           git add .
           git commit -m "Updated YTMusicUltimateDX submodules"
           git push origin
