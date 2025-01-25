@@ -107,7 +107,7 @@
 }
 
 - (UIImage *)tbImageNamed:(NSString *)imageName {
-    BOOL isDownloads = [imageName isEqualToString:@"downloads.png"];
+    BOOL isDownloads = [imageName isEqualToString:@"downloads"];
     YTAssetLoader *al = [[NSClassFromString(@"YTAssetLoader") alloc] initWithBundle:isDownloads ? NSBundle.ytmu_defaultBundle : [NSBundle mainBundle]];
 
     return [al imageNamed:imageName];
