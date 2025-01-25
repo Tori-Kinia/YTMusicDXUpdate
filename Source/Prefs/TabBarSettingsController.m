@@ -111,7 +111,7 @@
    
     YTAssetLoader *al = [[NSClassFromString(@"YTAssetLoader") alloc] initWithBundle:isDownloads ? NSBundle.ytmu_defaultBundle : [NSBundle mainBundle]];
 
-    return [al imageNamed:imageName  colorWithRed:30.0/255.0 green:150.0/255.0 blue:245.0/255.0 alpha:1.0];
+    return [al imageNamed:imageName color:onTintColor];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
