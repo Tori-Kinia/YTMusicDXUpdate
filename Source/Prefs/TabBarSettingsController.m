@@ -59,7 +59,7 @@
     if (indexPath.section == 0 && indexPath.row == 0) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell0"];
 
-        UISegmentedControl *startupPage = [[UISegmentedControl alloc] initWithItems:@[[self tbImageNamed:@"yt_outline_home_24pt"], [self tbImageNamed:@"youtube_outline/samples_24pt"], [self tbImageNamed:@"yt_outline_compass_24pt"], [self tbImageNamed:@"yt_outline_library_music_24pt"], [self tbImageNamed:@"icons/downloads"]]];
+        UISegmentedControl *startupPage = [[UISegmentedControl alloc] initWithItems:@[[self tbImageNamed:@"yt_outline_home_24pt"], [self tbImageNamed:@"youtube_outline/samples_24pt"], [self tbImageNamed:@"yt_outline_compass_24pt"], [self tbImageNamed:@"yt_outline_library_music_24pt"], [self tbImageNamed:@"layout/Library/Application Support/YTMusicUltimate.bundle/icons/downloads.png"]]];
 
         for (UIView *segmentView in startupPage.subviews) {
             for (UIView *subview in segmentView.subviews) {
@@ -107,8 +107,7 @@
 }
 
 - (UIImage *)tbImageNamed:(NSString *)imageName {
-    BOOL isDownloads = [imageName isEqualToString:@"icons/downloads"];
-
+    BOOL isDownloads = [imageName isEqualToString:@"layout/Library/Application Support/YTMusicUltimate.bundle/icons/downloads.png"];
     YTAssetLoader *al = [[NSClassFromString(@"YTAssetLoader") alloc] initWithBundle:isDownloads ? NSBundle.ytmu_defaultBundle : [NSBundle mainBundle]];
 
     return [al imageNamed:imageName];

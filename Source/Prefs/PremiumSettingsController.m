@@ -30,7 +30,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -47,7 +47,8 @@
         
         NSArray *settingsData = @[
             @{@"title": LOC(@"NO_ADS"), @"desc": LOC(@"NO_ADS_DESC"), @"key": @"noAds"},
-            @{@"title": LOC(@"BACKGROUND_PLAYBACK"), @"desc": LOC(@"BACKGROUND_PLAYBACK_DESC"), @"key": @"backgroundPlayback"}
+            @{@"title": LOC(@"BACKGROUND_PLAYBACK"), @"desc": LOC(@"BACKGROUND_PLAYBACK_DESC"), @"key": @"backgroundPlayback"},
+            @{@"title": LOC(@"FORCE_PREMIUM"), @"desc": LOC(@"FORCE_PREMIUM_DESC"), @"key": @"premiumWorkaround"}
         ];
 
         NSDictionary *data = settingsData[indexPath.row];
