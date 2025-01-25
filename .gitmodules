@@ -1,6 +1,3 @@
-[submodule "Tweaks/YouTubeHeader"]
-	path = Tweaks/YouTubeHeader
-	url = https://github.com/PoomSmart/YouTubeHeader.git
 [submodule "Tweaks/YouTubeMusicHeader"]
 	path = Tweaks/YouTubeMusicHeader
 	url = https://github.com/Tori-Kinia/YouTubeMusicHeader.git
