@@ -7,9 +7,6 @@ INSTALL_TARGET_PROCESSES = YouTubeMusic
 TARGET = iphone:clang:latest:13.0
 PACKAGE_VERSION = 2.1
 
-THEOS_DEVICE_IP = 192.168.1.9
-THEOS_DEVICE_PORT = 22
-
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = YTMusicUltimate
