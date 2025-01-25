@@ -14,29 +14,41 @@ on:
   
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     name: Build YTMusicUltimate
     runs-on: macos-latest
     permissions:
-      contents: write
+    contents: write
 
-    steps:
+steps:
       - name: Checkout Main
         uses: actions/checkout@v4.1.1
         with:
           path: main
           submodules: recursive
 
+      - name: Hide sensitive inputs
+        uses: levibostian/action-hide-sensitive-inputs@v1
+
       - name: Install Dependencies
-        run: brew install ldid dpkg make
-              
+        run: brew install make ldid
 
       - name: Set PATH environment variable
-        run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH 
+        run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
 
+      - name: Cache Theos
+        id: theos
+        uses: actions/cache@v4.2.0
+        env:
+          cache-name: theos_cache_67db2ab
+        with:
+          path: theos/
+          key: ${{ env.cache-name }}
+          restore-keys: ${{ env.cache-name }}
+              
       - name: Setup Theos
         uses: actions/checkout@v4.2.2
         with:
