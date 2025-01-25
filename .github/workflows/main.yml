@@ -16,7 +16,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-    jobs:
+  jobs:
     build:
     name: Build YTMusicUltimate
     runs-on: macos-13
