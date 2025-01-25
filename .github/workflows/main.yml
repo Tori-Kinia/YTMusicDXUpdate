@@ -98,7 +98,7 @@ jobs:
         id: build_package
         run: |
           cd ${{ github.workspace }}/main
-          make clean package SIDELOADING=1
+          make clean package ROOTLESS=1
         env:
           THEOS: ${{ github.workspace }}/theos
 
