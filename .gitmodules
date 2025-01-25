@@ -6,7 +6,7 @@
 	url = https://github.com/Tori-Kinia/YTMABConfig.git
 [submodule "Tweaks/Return-YouTube-Dislikes"]
 	path = Tweaks/Return-YouTube-Dislikes
-	url = https://github.com/PoomSmart/Return-YouTube-Dislikes.git
+	url = https://github.com/Tori-Kinia/Return-YouTube-Dislikes.git
 [submodule "Tweaks/Return-YouTube-Music-Dislikes"]
 	path = Tweaks/Return-YouTube-Music-Dislikes
 	url = https://github.com/Tori-Kinia/Return-YouTube-Music-Dislikes.git
