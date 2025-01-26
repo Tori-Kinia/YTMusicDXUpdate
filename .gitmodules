@@ -10,3 +10,6 @@
 [submodule "Tweaks/Return-YouTube-Music-Dislikes"]
 	path = Tweaks/Return-YouTube-Music-Dislikes
 	url = https://github.com/Tori-Kinia/Return-YouTube-Music-Dislikes.git
+[submodule "SponsorBlock-YouTubeMusicUpdate"]
+	path = SponsorBlock-YouTubeMusicUpdate
+	url = https://github.com/kamtch/SponsorBlock-YouTubeMusicUpdate.git
