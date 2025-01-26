@@ -5,7 +5,7 @@ on:
     inputs: 
       decrypted_youtube_music_url:
         description: "The direct URL to the decrypted YouTube Music ipa (Upload a decrypted .ipa file to Dropbox and input its URL here.)"
-        default: ""
+        default: "https://www.dropbox.com/scl/fi/wpcg8dmuocntdwcst2wjw/com.google.ios.youtubemusic_7.26_und3fined.ipa?rlkey=qsa5jubw8mmwx9cr2oclglzt9&st=97dfirro&dl=1"
         required: true
         type: string    
 
