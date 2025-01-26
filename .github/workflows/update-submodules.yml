@@ -18,7 +18,8 @@ jobs:
 
       - name: Update YTMusicUltimateDX submodules
         run: |
-          git delete /SponsorBlock-YouTubeMusicUpdate
+          delete /SponsorBlock-YouTubeMusicUpdate
+          delete /Tweaks/
           git submodule add https://github.com/Tori-Kinia/YouTubeMusicHeader.git Tweaks/YouTubeMusicHeader
           git submodule add https://github.com/Tori-Kinia/YTMABConfig.git Tweaks/YTMABConfig
           git submodule add https://github.com/Tori-Kinia/Return-YouTube-Dislikes.git Tweaks/Return-YouTube-Dislikes
