@@ -13,3 +13,6 @@
 [submodule "SponsorBlock-YouTubeMusicUpdate"]
 	path = SponsorBlock-YouTubeMusicUpdate
 	url = https://github.com/kamtch/SponsorBlock-YouTubeMusicUpdate.git
+[submodule "Tweaks/SponsorBlock-YouTubeMusic"]
+	path = Tweaks/SponsorBlock-YouTubeMusic
+	url = https://github.com/kamtch/SponsorBlock-YouTubeMusicUpdate.git
