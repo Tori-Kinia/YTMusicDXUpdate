@@ -133,11 +133,11 @@ jobs:
 
       - name: Inject tweak into provided IPA
         run: |
-          brew install coreutils
+          git clone git://git.sv.gnu.org/coreutils
           cd ${{ github.workspace }}/main/packages
           tweakName=$(ls)
           cd ${{ github.workspace }}/main
-          ./Azule/azule -i $PWD/YouTubeMusic.ipa -o $PWD/packages/YTMusicUltimate.ipa -f $PWD/packages/$tweakName
+          ./Azule/azule -i $PWD/ytm.ipa -o $PWD/packages/YTMusicUltimate.ipa -f $PWD/packages/$tweakName
 
 
 
