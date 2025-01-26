@@ -137,7 +137,7 @@ jobs:
           cd ${{ github.workspace }}/main/packages
           tweakName=$(ls)
           cd ${{ github.workspace }}/main
-          ./Azule/azule -i $PWD/ytm.ipa -o $PWD/packages/YTMusicUltimate.ipa -f $PWD/packages/$tweakName
+          ./Azule/azule -i $PWD/ytm.ipa -o $PWD/packages/YTMusicUltimate.ipa -f $PWD/packages/$tweakName uwsf packages/$tweakName -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }} 
 
 
 
