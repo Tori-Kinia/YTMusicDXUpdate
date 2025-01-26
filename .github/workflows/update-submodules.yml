@@ -18,11 +18,12 @@ jobs:
 
       - name: Update YTMusicUltimateDX submodules
         run: |
+          git delete /SponsorBlock-YouTubeMusicUpdate
           git submodule add https://github.com/Tori-Kinia/YouTubeMusicHeader.git Tweaks/YouTubeMusicHeader
           git submodule add https://github.com/Tori-Kinia/YTMABConfig.git Tweaks/YTMABConfig
           git submodule add https://github.com/Tori-Kinia/Return-YouTube-Dislikes.git Tweaks/Return-YouTube-Dislikes
           git submodule add https://github.com/Tori-Kinia/Return-YouTube-Music-Dislikes.git Tweaks/Return-YouTube-Music-Dislikes
-          git submodule add https://github.com/kamtch/SponsorBlock-YouTubeMusicUpdate.git
+          git submodule add https://github.com/kamtch/SponsorBlock-YouTubeMusicUpdate.git Tweaks/SponsorBlock-YouTubeMusic
           git add .
           git commit -m "Updated YTMusicUltimateDX submodules"
           git push origin
