@@ -20,7 +20,7 @@ jobs:
         run: |
           git submodule deinit SponsorBlock-YouTubeMusicUpdate
           git rm SponsorBlock-YouTubeMusicUpdate
-          git commit-m "Removed submodule "
+          git commit -m "Removed submodule "
           rm -rf .git/modules/SponsorBlock-YouTubeMusicUpdate
 
       - name: Update YTMusicUltimateDX submodules
