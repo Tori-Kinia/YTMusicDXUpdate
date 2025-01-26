@@ -4,7 +4,7 @@ endif
 
 ARCHS = arm64
 INSTALL_TARGET_PROCESSES = YouTubeMusic
-TARGET = iphone:clang:18.1:15.0
+TARGET = iphone:clang:16.4:15.0
 PACKAGE_VERSION = 3.0.0
 
 THEOS_DEVICE_IP = 192.168.1.9
