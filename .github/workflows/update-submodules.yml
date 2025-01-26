@@ -22,6 +22,7 @@ jobs:
           git submodule add https://github.com/Tori-Kinia/YTMABConfig.git Tweaks/YTMABConfig
           git submodule add https://github.com/Tori-Kinia/Return-YouTube-Dislikes.git Tweaks/Return-YouTube-Dislikes
           git submodule add https://github.com/Tori-Kinia/Return-YouTube-Music-Dislikes.git Tweaks/Return-YouTube-Music-Dislikes
+          git submodule add https://github.com/kamtch/SponsorBlock-YouTubeMusicUpdate.git
           git add .
           git commit -m "Updated YTMusicUltimateDX submodules"
           git push origin
